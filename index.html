@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>**Novatix** - Online Ticketing Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPurple: '#6D28D9',
+                        brandPink: '#DB2777',
+                        brandRed: '#DC2626',
+                        brandOrange: '#EA580C',
+                        brandYellow: '#FACC15',
+                        brandGreen: '#16A34A',
+                        brandCream: '#FEF3C7',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-pink-900 to-red-900 min-h-screen text-white font-sans">
+
+    <header class="bg-black/40 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 p-2.5 rounded-xl shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
+                </div>
+                <span class="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent">**Novatix**</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-2 bg-white/10 p-1.5 rounded-full border border-white/20">
+                <button onclick="switchTab('customer')" id="nav-customer" class="px-5 py-2 rounded-full font-bold text-sm transition-all bg-brandYellow text-black shadow-md">Browse & Buy</button>
+                <button onclick="switchTab('organizer')" id="nav-organizer" class="px-5 py-2 rounded-full font-bold text-sm transition-all hover:bg-white/20">Organizer Portal</button>
+                <button onclick="switchTab('admin')" id="nav-admin" class="px-5 py-2 rounded-full font-bold text-sm transition-all hover:bg-white/20">Admin Master</button>
+            </nav>
+            
+            <div class="hidden lg:block text-xs font-semibold px-3 py-1.5 rounded-lg bg-green-500/20 border border-green-500/40 text-green-300">
+                🟢 Live Gateway Active
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="view-customer" class="space-y-8">
+            <div class="text-center space-y-4 py-8 bg-gradient-to-r from-orange-600/30 via-pink-600/30 to-purple-600/30 rounded-3xl border border-white/10 shadow-2xl p-6">
+                <span class="bg-yellow-400 text-black text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Hot Events</span>
+                <h1 class="text-4xl sm:text-6xl font-black tracking-tight">Experience Live Shows Like Never Before</h1>
+                <p class="text-lg text-gray-200 max-w-2xl mx-auto">Discover upcoming concerts, comedy festivals, and theater performances. Secure your ticket instantly.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button class="px-4 py-2 rounded-xl bg-brandOrange font-bold text-sm shadow">All Events</button>
+                <button class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 font-bold text-sm">Concerts</button>
+                <button class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 font-bold text-sm">Festivals</button>
+                <button class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 font-bold text-sm">Comedy</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="event-grid">
+                <div class="bg-black/60 rounded-2xl overflow-hidden border border-white/10 hover:border-yellow-400 transition-all flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-red-600 to-orange-500 relative p-4 flex flex-col justify-between">
+                            <span class="self-end bg-black/60 text-yellow-300 font-bold text-xs px-3 py-1 rounded-full">Oct 24, 2026</span>
+                            <h3 class="text-2xl font-black text-white">Neon Sunset Fest</h3>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <p class="text-gray-300 text-sm">An electrifying night of live electronic music and interactive laser shows.</p>
+                            <div class="flex justify-between items-center text-sm font-semibold text-gray-400">
+                                <span>📍 Nairobi Arena</span>
+                                <span class="text-green-400 font-bold text-lg">$45.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="buyTicket('Neon Sunset Fest', 45)" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-extrabold py-3 rounded-xl hover:opacity-90 transition-all shadow-lg">
+                            Buy Ticket Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-black/60 rounded-2xl overflow-hidden border border-white/10 hover:border-pink-400 transition-all flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-purple-600 to-pink-600 relative p-4 flex flex-col justify-between">
+                            <span class="self-end bg-black/60 text-yellow-300 font-bold text-xs px-3 py-1 rounded-full">Nov 12, 2026</span>
+                            <h3 class="text-2xl font-black text-white">Acoustic Soul Sessions</h3>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <p class="text-gray-300 text-sm">Intimate acoustic performances by top indie artists under the starry sky.</p>
+                            <div class="flex justify-between items-center text-sm font-semibold text-gray-400">
+                                <span>📍 Royal Garden</span>
+                                <span class="text-green-400 font-bold text-lg">$25.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="buyTicket('Acoustic Soul Sessions', 25)" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-extrabold py-3 rounded-xl hover:opacity-90 transition-all shadow-lg">
+                            Buy Ticket Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-black/60 rounded-2xl overflow-hidden border border-white/10 hover:border-green-400 transition-all flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-green-600 to-teal-500 relative p-4 flex flex-col justify-between">
+                            <span class="self-end bg-black/60 text-yellow-300 font-bold text-xs px-3 py-1 rounded-full">Dec 05, 2026</span>
+                            <h3 class="text-2xl font-black text-white">Comedy Mega Jam</h3>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <p class="text-gray-300 text-sm">Featuring international headline comedians ready to make you laugh out loud.</p>
+                            <div class="flex justify-between items-center text-sm font-semibold text-gray-400">
+                                <span>📍 Grand Theatre</span>
+                                <span class="text-green-400 font-bold text-lg">$30.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="buyTicket('Comedy Mega Jam', 30)" class="w-full bg-gradient-to-r from-green-400 to-teal-500 text-black font-extrabold py-3 rounded-xl hover:opacity-90 transition-all shadow-lg">
+                            Buy Ticket Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-organizer" class="hidden space-y-8">
+            <div class="bg-black/50 p-6 rounded-3xl border border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="text-brandPink font-bold text-xs uppercase tracking-widest">Organizer Portal</span>
+                    <h2 class="text-3xl font-black">Event Management & Tracking</h2>
+                </div>
+                <button class="bg-brandOrange text-white font-bold px-5 py-2.5 rounded-xl shadow-lg hover:bg-orange-600 transition">Create New Event</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-purple-800 to-indigo-900 p-6 rounded-2xl border border-purple-500/30 shadow-xl">
+                    <p class="text-purple-300 font-medium text-sm">Your Active Events</p>
+                    <h3 class="text-4xl font-black mt-2">3</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">↑ 1 launching soon</span>
+                </div>
+                <div class="bg-gradient-to-br from-pink-800 to-rose-900 p-6 rounded-2xl border border-pink-500/30 shadow-xl">
+                    <p class="text-pink-300 font-medium text-sm">Tickets Bought (Your Shows)</p>
+                    <h3 class="text-4xl font-black mt-2" id="org-tickets-sold">412</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">↑ 24 today</span>
+                </div>
+                <div class="bg-gradient-to-br from-amber-800 to-orange-900 p-6 rounded-2xl border border-amber-500/30 shadow-xl">
+                    <p class="text-amber-300 font-medium text-sm">Your Total Revenue</p>
+                    <h3 class="text-4xl font-black mt-2" id="org-revenue">$14,350</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">Payout ready</span>
+                </div>
+            </div>
+
+            <div class="bg-black/60 rounded-3xl border border-white/10 overflow-hidden shadow-2xl p-6">
+                <h3 class="text-xl font-bold mb-4">Tracked Occasions</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-white/5 text-gray-400 uppercase text-xs">
+                            <tr>
+                                <th class="p-4">Event Name</th>
+                                <th class="p-4">Date</th>
+                                <th class="p-4">Capacity</th>
+                                <th class="p-4">Tickets Sold</th>
+                                <th class="p-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/10">
+                            <tr>
+                                <td class="p-4 font-bold text-yellow-300">Neon Sunset Fest</td>
+                                <td class="p-4 text-gray-300">Oct 24, 2026</td>
+                                <td class="p-4 text-gray-300">500</td>
+                                <td class="p-4 text-green-400 font-bold">280</td>
+                                <td class="p-4"><span class="bg-green-500/20 text-green-300 text-xs px-2.5 py-1 rounded-full border border-green-500/30">Selling Fast</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-pink-300">Acoustic Soul Sessions</td>
+                                <td class="p-4 text-gray-300">Nov 12, 2026</td>
+                                <td class="p-4 text-gray-300">200</td>
+                                <td class="p-4 text-green-400 font-bold">132</td>
+                                <td class="p-4"><span class="bg-green-500/20 text-green-300 text-xs px-2.5 py-1 rounded-full border border-green-500/30">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-admin" class="hidden space-y-8">
+            <div class="bg-black/50 p-6 rounded-3xl border border-white/10 flex justify-between items-center">
+                <div>
+                    <span class="text-brandYellow font-bold text-xs uppercase tracking-widest">Master Administration</span>
+                    <h2 class="text-3xl font-black">Platform Overview</h2>
+                </div>
+                <span class="bg-red-500/20 border border-red-500/40 text-red-300 px-3 py-1.5 rounded-xl text-xs font-bold">Restricted Access</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-red-900 to-black p-6 rounded-2xl border border-red-500/30 shadow-xl">
+                    <p class="text-red-300 font-medium text-sm">Total Platform Revenue</p>
+                    <h3 class="text-4xl font-black mt-2" id="admin-revenue">$32,480</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">10% Platform Commission</span>
+                </div>
+                <div class="bg-gradient-to-br from-green-900 to-black p-6 rounded-2xl border border-green-500/30 shadow-xl">
+                    <p class="text-green-300 font-medium text-sm">Total Tickets Sold</p>
+                    <h3 class="text-4xl font-black mt-2" id="admin-tickets">1,240</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">Across all events</span>
+                </div>
+                <div class="bg-gradient-to-br from-blue-900 to-black p-6 rounded-2xl border border-blue-500/30 shadow-xl">
+                    <p class="text-blue-300 font-medium text-sm">Active Promoters / Organizers</p>
+                    <h3 class="text-4xl font-black mt-2">14</h3>
+                    <span class="text-xs text-green-400 font-semibold mt-1 inline-block">2 pending review</span>
+                </div>
+            </div>
+
+            <div class="bg-black/60 rounded-3xl border border-white/10 p-6 shadow-2xl space-y-4">
+                <h3 class="text-xl font-bold">Recent Ticket Transactions</h3>
+                <div class="space-y-3" id="transaction-log">
+                    <div class="p-3 bg-white/5 rounded-xl flex justify-between items-center text-sm">
+                        <span>Ticket Purchased: <strong class="text-yellow-300">Neon Sunset Fest</strong> ($45)</span>
+                        <span class="text-gray-400 text-xs">Just Now</span>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-xl flex justify-between items-center text-sm">
+                        <span>Ticket Purchased: <strong class="text-pink-300">Acoustic Soul Sessions</strong> ($25)</span>
+                        <span class="text-gray-400 text-xs">5 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 border-t border-white/10 bg-black/60 py-8 text-center text-gray-400 text-sm">
+        <p>&copy; 2026 <span class="font-extrabold bg-gradient-to-r from-yellow-300 to-pink-400 bg-clip-text text-transparent">**Novatix**</span>. All Rights Reserved. Built for high-energy ticket management.</p>
+    </footer>
+
+    <script>
+        // State variables for interactive demo tracking
+        let totalTicketsSold = 1240;
+        let totalRevenue = 32480;
+        let orgTickets = 412;
+        let orgRev = 14350;
+
+        function switchTab(tabId) {
+            // Hide all views
+            document.getElementById('view-customer').classList.add('hidden');
+            document.getElementById('view-organizer').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+
+            // Reset navigation styles
+            document.getElementById('nav-customer').className = "px-5 py-2 rounded-full font-bold text-sm transition-all hover:bg-white/20";
+            document.getElementById('nav-organizer').className = "px-5 py-2 rounded-full font-bold text-sm transition-all hover:bg-white/20";
+            document.getElementById('nav-admin').className = "px-5 py-2 rounded-full font-bold text-sm transition-all hover:bg-white/20";
+
+            // Show selected view and highlight button
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+            document.getElementById('nav-' + tabId).className = "px-5 py-2 rounded-full font-bold text-sm transition-all bg-brandYellow text-black shadow-md";
+        }
+
+        function buyTicket(eventName, price) {
+            // Update stats dynamically to show live feedback
+            totalTicketsSold += 1;
+            totalRevenue += price;
+            orgTickets += 1;
+            orgRev += price;
+
+            // Update DOM fields
+            document.getElementById('admin-tickets').innerText = totalTicketsSold;
+            document.getElementById('admin-revenue').innerText = "$" + totalRevenue.toLocaleString();
+            document.getElementById('org-tickets-sold').innerText = orgTickets;
+            document.getElementById('org-revenue').innerText = "$" + orgRev.toLocaleString();
+
+            // Add log entry
+            const logContainer = document.getElementById('transaction-log');
+            const newLog = document.createElement('div');
+            newLog.className = "p-3 bg-white/5 rounded-xl flex justify-between items-center text-sm animate-pulse";
+            newLog.innerHTML = `<span>Ticket Purchased: <strong class="text-yellow-300">${eventName}</strong> ($${price})</span><span class="text-gray-400 text-xs">Just Now</span>`;
+            logContainer.prepend(newLog);
+
+            // Simple success alert
+            alert(`🎉 Success! You have successfully purchased a ticket for "${eventName}". Your digital pass has been simulated and metrics updated.`);
+        }
+    </script>
+</body>
+</html>
